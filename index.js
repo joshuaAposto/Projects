@@ -20,7 +20,7 @@ const routes = [
     { path: '/spotifysearch', file: 'spotifysearch.html' },
     { path: '/tiktokdl', file: 'tiktokdl.html' },
     { path: '/ss', file: 'ss.html' },
-    { path: '/xxx', file: 'xxx.html' },
+    { path: '/xxx', file: 'Maintenance.html' },
     { path: '/micro', file: 'micro.html' },
     { path: '/imgur', file: 'Uploader.html' },
     { path: '/shoti', file: 'shoti.html' }
