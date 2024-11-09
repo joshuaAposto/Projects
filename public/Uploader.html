@@ -1,188 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imgur Image to Link</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <title>Imgur Image To Link</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #00adb5;
-            --secondary-color: #393e46;
-            --background-color: #222831;
-            --text-color: #eeeeee;
+            --primary-color: #007bff;
+            --secondary-color: #ff00e6;
+            --background-color: #060615;
+            --text-color: #e0e0ff;
+            --nav-height: 80px;
+            --transition-speed: 0.3s;
+            --glow-strength: 5px;
         }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--background-color), var(--secondary-color));
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--background-color);
             color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            line-height: 1.6;
             overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.1) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(255, 0, 230, 0.1) 0%, transparent 20%);
+            background-attachment: fixed;
         }
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+
         .wrapper-container {
-            max-width: 600px;
-            width: 100%;
-            padding: 30px;
-            background-color: rgba(57, 62, 70, 0.8);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
             text-align: center;
         }
+
         h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
             color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            font-weight: bold;
         }
+
         .upload-area {
-            text-align: center;
             margin-bottom: 20px;
         }
+
         .drag-drop-area {
-            width: 100%; 
-            height: 200px; 
-            background-color: rgba(255, 255, 255, 0.5); 
-            border: 2px dashed var(--primary-color); 
+            width: 100%;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px dashed var(--primary-color);
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: border-color 0.3s ease; 
-            border-radius: 10px; 
-            color: var(--text-color); 
+            transition: border-color 0.3s ease;
+            border-radius: 10px;
+            color: var(--text-color);
         }
+
         .drag-drop-area:hover {
-            border-color: var(--primary-color); 
+            border-color: var(--primary-color);
         }
-        .result {
-            display: none;
-            margin-top: 20px; 
-        }
-        .result a {
-            color: var(--primary-color);
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 16px; 
-            word-break: break-word; 
-        }
+
         .preview {
             margin-top: 20px;
         }
-        .image-preview {
+
+        .media-preview {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
             margin-top: 10px;
+            display: inline-block;
+            text-align: center;
         }
+
+        .video-preview {
+            max-height: 300px;
+            width: auto;
+        }
+
         .artB-upload {
             display: block;
             width: 100%;
             padding: 15px;
-            background-color: var(--primary-color);
+            background-color: #007bff;
             color: var(--text-color);
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
-            margin-top: 20px; 
-            font-size: 16px; 
+            margin-top: 20px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease-in-out;
         }
+
         .artB-upload:hover {
-            background-color: #007e85; 
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 123, 255, 0.5);
+        }
+
+        .artB-upload:active {
+            transform: scale(0.98);
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result a {
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+            word-break: break-word;
+        }
+
+        .loading-indicator {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .disabled-btn {
+            background-color: #aaaaaa;
+            cursor: not-allowed;
         }
     </style>
 </head>
+
 <body>
-    <div id="particles-js"></div>
     <div class="wrapper-container">
-        <h1>Imgur Image to Link</h1>
+        <h1>Imgur Image To Link</h1>
         <div class="upload-area">
-            <div class="drag-drop-area" onclick="uploadImage()">
-                <span>Drag & Drop or Click to Upload Image</span>
+            <div class="drag-drop-area" onclick="uploadFile()">
+                <span id="uploadMessage">Add a photo or video</span>
             </div>
-            <input type="file" id="file-input" style="display: none;">
+            <input type="file" id="file-input" style="display: none;" accept="image/*, video/*, .gif">
         </div>
-        <div class="preview" id="image-preview-container" style="display: none;">
-            <img id="image-preview" class="image-preview" />
+        <div class="preview" id="media-preview-container" style="display: none;">
+            <div id="image-preview-container" style="display: none;">
+                <img id="image-preview" class="media-preview" />
+            </div>
+            <div id="video-preview-container" style="display: none;">
+                <video id="video-preview" class="media-preview video-preview" controls></video>
+            </div>
+            <div id="gif-preview-container" style="display: none;">
+                <img id="gif-preview" class="media-preview" />
+            </div>
         </div>
         <div class="result" id="article-C">
-            <p>Your uploaded image link:</p>
+            <p>Your uploaded link:</p>
             <a id="link" target="_blank"></a>
         </div>
-        <button class="artB-upload" id="submitBtn" onclick="submitImage()">Submit</button>
+        <button class="artB-upload" id="submitBtn" onclick="submitFile()" disabled>Submit</button>
+        <div class="loading-indicator" id="loading-indicator">
+            <p>Uploading...</p>
+        </div>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script>
         const clientID = localStorage.getItem('clientID') || 'Client-ID e4f58fc81daec99';
         localStorage.setItem('clientID', clientID);
 
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#ffffff" },
-                shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
-                opacity: { value: 0.5, random: false },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
-                modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
-            },
-            retina_detect: true
-        });
-
-        function uploadImage() {
+        function uploadFile() {
             document.getElementById('file-input').click();
         }
 
         document.getElementById('file-input').addEventListener('change', function() {
             var file = this.files[0];
             var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('image-preview').src = e.target.result;
-                document.getElementById('image-preview-container').style.display = 'block';
-                document.getElementById('article-C').style.display = 'none';
-                document.getElementById('link').innerHTML = ''; 
-            };
-            reader.readAsDataURL(file);
+
+            if (file.type.startsWith('image/')) {
+                reader.onload = function(e) {
+                    document.getElementById('image-preview').src = e.target.result;
+                    document.getElementById('image-preview-container').style.display = 'block';
+                    document.getElementById('video-preview-container').style.display = 'none';
+                    document.getElementById('gif-preview-container').style.display = 'none';
+                    document.getElementById('media-preview-container').style.display = 'block';
+                    document.getElementById('submitBtn').disabled = false;
+                    document.getElementById('uploadMessage').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            } else if (file.type.startsWith('video/')) {
+                var videoElement = document.getElementById('video-preview');
+                videoElement.src = URL.createObjectURL(file);
+                document.getElementById('video-preview-container').style.display = 'block';
+                document.getElementById('image-preview-container').style.display = 'none';
+                document.getElementById('gif-preview-container').style.display = 'none';
+                document.getElementById('media-preview-container').style.display = 'block';
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('uploadMessage').style.display = 'none';
+            } else if (file.type === 'image/gif') {
+                var gifElement = document.getElementById('gif-preview');
+                gifElement.src = URL.createObjectURL(file);
+                document.getElementById('gif-preview-container').style.display = 'block';
+                document.getElementById('image-preview-container').style.display = 'none';
+                document.getElementById('video-preview-container').style.display = 'none';
+                document.getElementById('media-preview-container').style.display = 'block';
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('uploadMessage').style.display = 'none';
+            }
         });
 
-        function get_image_link(url) {
-            var linkContainer = document.getElementById('article-C');
-            var link = document.getElementById('link');
-            link.href = url;
-            link.innerHTML = url;
-            linkContainer.style.display = 'block';
-        }
-
-        function submitImage() {
+        function submitFile() {
             if (is_disabled()) {
                 console.log('Not Available');
             } else {
-                fetchData();
+                document.getElementById('loading-indicator').style.display = 'block';
+                uploadData();
             }
         }
 
@@ -191,30 +229,48 @@
             return btn.hasAttribute('disabled');
         }
 
-        function fetchData() {
+        function uploadData() {
             var submitBtn = document.getElementById('submitBtn');
-            submitBtn.setAttribute('disabled', ''); 
+            submitBtn.setAttribute('disabled', '');
             var file = document.getElementById('file-input').files[0];
             var formData = new FormData();
             formData.append("image", file);
+
             $.ajax({
                 url: "https://api.imgur.com/3/image",
                 method: "POST",
-                headers: { "Authorization": clientID },
-                processData: false,
+                headers: {
+                    Authorization: clientID
+                },
+                data: formData,
                 contentType: false,
-                data: formData
-            }).done(function(response) {
-                let link = response.data.link;
-                get_image_link(link);
-                document.getElementById('file-input').value = '';
-                document.getElementById('image-preview-container').style.display = 'none'; // Hide the preview after upload
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-                console.error("Upload failed: " + textStatus, errorThrown);
-            }).always(function() {
-                submitBtn.removeAttribute('disabled'); 
+                processData: false,
+                success: function(response) {
+                    document.getElementById('loading-indicator').style.display = 'none';
+                    var link = response.data.link;
+                    document.getElementById('link').href = link;
+                    document.getElementById('link').textContent = link;
+                    document.getElementById('article-C').style.display = 'block';
+                    reset();
+                },
+                error: function(error) {
+                    alert("There was an error uploading the file.");
+                    document.getElementById('loading-indicator').style.display = 'none';
+                    document.getElementById('submitBtn').disabled = false;
+                }
             });
+        }
+
+        function reset() {
+            document.getElementById('file-input').value = '';
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('image-preview').src = '';
+            document.getElementById('video-preview').src = '';
+            document.getElementById('gif-preview').src = '';
+            document.getElementById('uploadMessage').style.display = 'block';
+            document.getElementById('media-preview-container').style.display = 'none';
         }
     </script>
 </body>
+
 </html>
