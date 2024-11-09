@@ -22,7 +22,7 @@ const routes = [
     { path: '/ss', file: 'ss.html' },
     { path: '/xxx', file: 'xxx.html' },
     { path: '/micro', file: 'micro.html' },
-    { path: '/uploader', file: 'Uploader.html' },
+    { path: '/imgur', file: 'Uploader.html' },
     { path: '/shoti', file: 'shoti.html' }
 ];
 
