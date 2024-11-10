@@ -17,7 +17,8 @@ const routes = [
     { path: '/xxx', file: 'maintenance.html' },
     { path: '/micro', file: 'micro.html' },
     { path: '/imgur', file: 'Uploader.html' },
-    { path: '/shoti', file: 'shoti.html' }
+    { path: '/shoti', file: 'shoti.html' },
+    { path: '/nashbot', file: 'nashbot.html' }
 ];
 
 routes.forEach(route => {
