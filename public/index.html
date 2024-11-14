@@ -54,6 +54,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+            position: relative;
         }
 
         .burat h2 {
@@ -159,6 +160,37 @@
         #chat-input button:hover {
             background-color: var(--secondary-color);
         }
+
+        .status {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #1a202c;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #a0aec0;
+        }
+
+        .status .dot {
+            height: 10px;
+            width: 10px;
+            background-color: #48bb78;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .status .down {
+            height: 10px;
+            width: 10px;
+            background-color: #FF0000;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
     </style>
 </head>
 
@@ -167,65 +199,100 @@
         <h1>Projects</h1>
 
         <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>Share Booster</h2>
             <p>An automated tool for sharing Facebook posts via URL and cookies.</p>
             <a href="https://autosharee.onrender.com/" class="burat-link" target="_blank">View Project</a>
         </div>
 
         <div class="burat">
-            <h2>Nashbot GPT</h2>
-            <p>easy to make an essay to use this Nashbot GPT</p>
-            <a href="/nashbot" class="burat-link" target="_blank">View Project</a>
-        </div>
-
-        <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>YT Audio Downloader</h2>
             <p>Youtube Audio Downloader via link</p>
             <a href="https://youtube-audio-downloaderr.vercel.app/" class="burat-link" target="_blank">View Project</a>
         </div>
 
         <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>Spotify Downloader</h2>
             <p>Download your favorite songs from Spotify</p>
             <a href="/spotify" class="burat-link" target="_blank">View Project</a>
         </div>
+
         <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>Spotify Search</h2>
             <p>Search for your favorite songs on Spotify</p>
             <a href="/spotifysearch" class="burat-link" target="_blank">View Project</a>
         </div>
 
         <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>ImGur Image to Link</h2>
             <p>easy to upload your image, image to link converter</p>
             <a href="/imgur" class="burat-link" target="_blank">View Project</a>
         </div>
 
         <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>Random Shoti & any video Generator</h2>
             <p>A random Shoti Vids And any videos you can watch this</p>
             <a href="/shoti" class="burat-link" target="_blank">View Project</a>
         </div>
 
         <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>Tiktok Video Downloader</h2>
             <p>easy to download your favorite tiktok video</p>
             <a href="/tiktokdl" class="burat-link" target="_blank">View Project</a>
         </div>
 
         <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>Microsoft Account Custom Generator</h2>
             <p>Generate custom Microsoft accounts easily</p>
             <a href="/micro" class="burat-link" target="_blank">View Project</a>
         </div>
 
         <div class="burat">
+            <div class="status">
+                <span class="dot"></span>
+                Up
+            </div>
             <h2>ScreenShot Website</h2>
             <p>easy to screenShot website and download the image</p>
             <a href="/ss" class="burat-link" target="_blank">View Project</a>
         </div>
 
         <div class="burat">
+            <div class="status">
+                <span class="down"></span>
+                Down
+            </div>
             <h2>Nash XXX Videos</h2>
             <p>easy to watch your favorite pornstar</p>
             <a href="/xxx" class="burat-link" target="_blank">View Project</a>
