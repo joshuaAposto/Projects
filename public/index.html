@@ -240,6 +240,30 @@
             display: inline-block;
             margin-right: 5px;
         }
+
+        .search-container {
+            margin: 0 auto;
+            max-width: 379px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #search-bar {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 2px solid var(--primary-color);
+            background-color: rgba(6, 6, 21, 0.6);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: all var(--transition-speed) ease;
+        }
+
+        #search-bar:focus {
+            outline: none;
+            background-color: var(--background-color);
+            box-shadow: 0 4px 10px rgba(0, 247, 255, 0.4);
+        }
     </style>
 </head>
 
@@ -247,6 +271,10 @@
     <div class="header">
         <div class="logo">Projects</div>
         <div class="menu-btn" onclick="toggleMenu()">&#9776;</div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search Projects...">
     </div>
 
     <div id="mySidebar" class="sidebar">
@@ -317,6 +345,26 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-bar');
+            const apiCards = document.querySelectorAll('.burat');
+
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase();
+
+                apiCards.forEach((card) => {
+                    const title = card.querySelector('h2').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+
+                    if (title.includes(query) || description.includes(query)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
         function toggleMenu() {
             const sidebar = document.getElementById("mySidebar");
             if (sidebar.style.width === "250px") {
@@ -378,13 +426,10 @@
             }
         });
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5625905404408423"
-     crossorigin="anonymous"></script>
-    <amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-5625905404408423">
-</amp-auto-ads>
-    <script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5625905404408423" crossorigin="anonymous"></script>
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-5625905404408423">
+    </amp-auto-ads>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
 </body>
 
