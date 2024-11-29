@@ -11,11 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 const routes = [
     { path: '/', file: 'index.html' },
     { path: '/spotify', file: 'spotify.html' },
-    { path: '/spotifysearch', file: 'spotifysearch.html' },
-    { path: '/tiktokdl', file: 'tiktokdl.html' },
     { path: '/ss', file: 'ss.html' },
-    { path: '/xxx', file: '404.html' },
-    { path: '/micro', file: 'micro.html' },
     { path: '/imgur', file: 'Uploader.html' },
     { path: '/shoti', file: 'shoti.html' },
     { path: '/nashbot', file: 'nashbot.html' }
