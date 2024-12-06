@@ -438,14 +438,14 @@
     <script>
     const burat = () => {
       if (navigator.webdriver || !navigator.userAgent || navigator.userAgent.includes('Headless')) {
-        document.body.innerHTML = '<h1>This is a bot</h1>';
+        document.body.innerHTML = '<h1>This is a Anti Bogart</h1>';
         setTimeout(() => window.close(), 2000);
       }
 
       const forbiddenHeaders = ['sitemode.io', 'bot', 'crawler'];
       forbiddenHeaders.forEach((header) => {
         if (navigator.userAgent.toLowerCase().includes(header)) {
-          document.body.innerHTML = '<h1>This is a bot</h1>';
+          document.body.innerHTML = '<h1>This is a Anti Bogart</h1>';
           setTimeout(() => window.close(), 2000);
         }
       });
@@ -456,7 +456,7 @@
 
     window.addEventListener('blur', () => {
       debugger;
-      document.body.innerHTML = '<h1>This is a bot</h1>';
+      document.body.innerHTML = '<h1>This is a Anti Bogart</h1>';
       setTimeout(() => window.close(), 2000);
     });
     </script>
