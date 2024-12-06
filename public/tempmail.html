@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporary Email</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="icon" href="https://i.imgur.com/H7pxoeY.jpeg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        :root {
+            --primary-color: #00f7ff;
+            --secondary-color: #ff00e6;
+            --background-color: #060615;
+            --text-color: #e0e0ff;
+            --glow-strength: 5px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 10px;
+            text-align: center;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 230, 0.1) 0%, transparent 20%);
+            background-attachment: fixed;
+        }
+
+        img {
+            border-radius: 50%;
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 var(--glow-strength) var(--primary-color);
+        }
+
+        .form-control {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid var(--primary-color);
+            color: var(--text-color);
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            pointer-events: none;
+        }
+
+        .btn-grad {
+            background-image: linear-gradient(to right, #000000 0%, #53346D 51%, #000000 100%)
+        }
+
+        .btn-grad {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            border-radius: 10px;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 8px 0;
+        }
+
+        .btn-grad:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .inbox-container {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            width: 100%;
+            max-width: 270px;
+            text-align: left;
+            overflow-y: auto;
+            max-height: 200px;
+            margin: 0 auto;
+        }
+
+        .inbox-container h5 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .inbox-container table {
+            width: 100%;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .email-item {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .email-item:hover {
+            background-color: rgba(255, 0, 230, 0.1);
+        }
+
+        .email-preview {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        #datetime {
+            margin-top: 15px;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="https://i.imgur.com/H7pxoeY.jpeg" height="90px" width="90px" alt="TempMail Logo">
+        <h1><i class="fa-solid fa-envelope"></i>Temporary Email</h1>
+        <input type="text" id="addr" placeholder="Temporary email" class="form-control" readonly>
+        <button class="btn-grad" onclick="refreshMail()" id="checkBtn"><i class="fas fa-sync"></i> CHECK BOX</button>
+        <button class="btn-grad" onclick="genEmail()"><i class="fas fa-redo"></i> GENERATE NEW EMAIL</button>
+        <div id="datetime">
+            <p id="time"></p>
+        </div>
+        <div class="inbox-container">
+            <h5>Recent Emails:</h5>
+            <table id="emails"></table>
+        </div>
+        <div class="email-preview" id="email-preview"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script>
+        let openEmailId = null;
+
+        function genEmail() {
+            $.getJSON("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1", (res) => {
+                $('#addr').val(res[0]);
+                refreshMail();
+            });
+        }
+
+        function refreshMail() {
+            const addr = $('#addr').val();
+            if (!addr) {
+                alert("Please generate or input an email address first!");
+                return;
+            }
+
+            const [user, domain] = addr.split('@');
+            $.getJSON(`https://www.1secmail.com/api/v1/?action=getMessages&login=${user}&domain=${domain}`, (emails) => {
+                $('#emails').empty();
+                emails.forEach(email => {
+                    $('#emails').append(`<tr class='email-item' onclick='toggleEmail(${email.id})'><td>${email.subject}</td></tr>`);
+                });
+            });
+        }
+
+        function toggleEmail(id) {
+            const addr = $('#addr').val();
+            if (!addr) {
+                alert("Please generate or input an email address first!");
+                return;
+            }
+
+            const [user, domain] = addr.split('@');
+
+            if (openEmailId === id) {
+                $('#email-preview').hide();
+                openEmailId = null;
+            } else {
+                $.getJSON(`https://www.1secmail.com/api/v1/?action=readMessage&login=${user}&domain=${domain}&id=${id}`, (email) => {
+                    const preview = $('#email-preview');
+                    preview.html(`<h6>Subject: ${email.subject}</h6><p>${email.htmlBody || email.body}</p>`);
+                    preview.show();
+                    openEmailId = id;
+                });
+            }
+        }
+
+        function updateTime() {
+            const options = {
+                timeZone: 'Asia/Manila',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            const now = new Date().toLocaleString('en-US', options);
+            document.getElementById("time").textContent = "Time: " + now;
+        }
+
+        setInterval(updateTime, 1000);
+        genEmail();
+    </script>
+</body>
+
+</html>
