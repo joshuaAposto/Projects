@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-5625905404408423">
     <title>Burat</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -436,10 +435,30 @@
             }
         });
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5625905404408423" crossorigin="anonymous"></script>
-    <amp-auto-ads type="adsense" data-ad-client="ca-pub-5625905404408423">
-    </amp-auto-ads>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script>
+    const burat = () => {
+      if (navigator.webdriver || !navigator.userAgent || navigator.userAgent.includes('Headless')) {
+        document.body.innerHTML = '<h1>This is a bot</h1>';
+        setTimeout(() => window.close(), 2000);
+      }
+
+      const forbiddenHeaders = ['sitemode.io', 'bot', 'crawler'];
+      forbiddenHeaders.forEach((header) => {
+        if (navigator.userAgent.toLowerCase().includes(header)) {
+          document.body.innerHTML = '<h1>This is a bot</h1>';
+          setTimeout(() => window.close(), 2000);
+        }
+      });
+    };
+
+    burat();
+    setInterval(burat, 3000);
+
+    window.addEventListener('blur', () => {
+      debugger;
+      document.body.innerHTML = '<h1>This is a bot</h1>';
+      setTimeout(() => window.close(), 2000);
+    });
     </script>
 </body>
 
