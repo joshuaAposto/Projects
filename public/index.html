@@ -435,36 +435,6 @@
             }
         });
     </script>
-    <script>
-    let isBotDetected = false;
-
-    const burat = () => {
-      if (navigator.webdriver || !navigator.userAgent || navigator.userAgent.includes('Headless')) {
-        isBotDetected = true;
-      }
-
-      const forbiddenHeaders = ['sitemode.io', 'bot', 'crawler'];
-      forbiddenHeaders.forEach((header) => {
-        if (navigator.userAgent.toLowerCase().includes(header)) {
-          isBotDetected = true;
-        }
-      });
-
-      if (isBotDetected) {
-        document.body.innerHTML = '<h1>This is a bot</h1>';
-        setTimeout(() => window.close(), 2000);
-      }
-    };
-
-    window.addEventListener('focus', () => {
-      if (!isBotDetected) {
-        burat();
-      }
-    });
-
-    burat();
-    setInterval(burat, 3000);
-    </script>
 </body>
 
 </html>
