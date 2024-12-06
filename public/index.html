@@ -437,27 +437,30 @@
     </script>
     <script>
     const burat = () => {
-      if (navigator.webdriver || !navigator.userAgent || navigator.userAgent.includes('Headless')) {
-        document.body.innerHTML = '<h1>This is a Anti Bogart</h1>';
+      const forbiddenHeaders = ['sitemode.io', 'bot', 'crawler'];
+      const isBot = forbiddenHeaders.some((header) => navigator.userAgent.toLowerCase().includes(header));
+
+      if (isBot) {
+        document.body.innerHTML = '<h1>This is a bot</h1>';
         setTimeout(() => window.close(), 2000);
       }
+    };
 
-      const forbiddenHeaders = ['sitemode.io', 'bot', 'crawler'];
-      forbiddenHeaders.forEach((header) => {
-        if (navigator.userAgent.toLowerCase().includes(header)) {
-          document.body.innerHTML = '<h1>This is a Anti Bogart</h1>';
-          setTimeout(() => window.close(), 2000);
-        }
-      });
+    const bulbul = () => {
+      const isIframe = window.self !== window.top;
+      const hasAutomation = navigator.webdriver || !navigator.userAgent;
+
+      if (isIframe || hasAutomation) {
+        document.body.innerHTML = '<h1>This is a bot</h1>';
+        setTimeout(() => window.close(), 2000);
+      }
     };
 
     burat();
-    setInterval(burat, 3000);
+    bulbul();
 
-    window.addEventListener('blur', () => {
-      debugger;
-      document.body.innerHTML = '<h1>This is a Anti Bogart</h1>';
-      setTimeout(() => window.close(), 2000);
+    window.addEventListener('focus', () => {
+      burat();
     });
     </script>
 </body>
