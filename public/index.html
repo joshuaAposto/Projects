@@ -441,7 +441,7 @@
       const isBot = forbiddenHeaders.some((header) => navigator.userAgent.toLowerCase().includes(header));
 
       if (isBot) {
-        document.body.innerHTML = '<h1>This is a Anti Bogart</h1>';
+        document.body.innerHTML = '<h1>This is a bot</h1>';
         setTimeout(() => window.close(), 2000);
       }
     };
@@ -451,21 +451,16 @@
       const hasAutomation = navigator.webdriver || !navigator.userAgent;
 
       if (isIframe || hasAutomation) {
-        sessionStorage.setItem('isBot', 'true');
-        document.body.innerHTML = '<h1>This is a Anti Bogart</h1>';
+        document.body.innerHTML = '<h1>This is a bot</h1>';
         setTimeout(() => window.close(), 2000);
       }
     };
 
-    if (!sessionStorage.getItem('isBot')) {
-      burat();
-      bulbul();
-    }
+    burat();
+    bulbul();
 
     window.addEventListener('focus', () => {
-      if (!sessionStorage.getItem('isBot')) {
-        burat();
-      }
+      burat();
     });
     </script>
 </body>
