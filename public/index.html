@@ -436,32 +436,34 @@
         });
     </script>
     <script>
+    let isBotDetected = false;
+
     const burat = () => {
+      if (navigator.webdriver || !navigator.userAgent || navigator.userAgent.includes('Headless')) {
+        isBotDetected = true;
+      }
+
       const forbiddenHeaders = ['sitemode.io', 'bot', 'crawler'];
-      const isBot = forbiddenHeaders.some((header) => navigator.userAgent.toLowerCase().includes(header));
+      forbiddenHeaders.forEach((header) => {
+        if (navigator.userAgent.toLowerCase().includes(header)) {
+          isBotDetected = true;
+        }
+      });
 
-      if (isBot) {
+      if (isBotDetected) {
         document.body.innerHTML = '<h1>This is a bot</h1>';
         setTimeout(() => window.close(), 2000);
       }
     };
-
-    const bulbul = () => {
-      const isIframe = window.self !== window.top;
-      const hasAutomation = navigator.webdriver || !navigator.userAgent;
-
-      if (isIframe || hasAutomation) {
-        document.body.innerHTML = '<h1>This is a bot</h1>';
-        setTimeout(() => window.close(), 2000);
-      }
-    };
-
-    burat();
-    bulbul();
 
     window.addEventListener('focus', () => {
-      burat();
+      if (!isBotDetected) {
+        burat();
+      }
     });
+
+    burat();
+    setInterval(burat, 3000);
     </script>
 </body>
 
