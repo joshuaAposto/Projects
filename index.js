@@ -11,9 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 const routes = [
     { path: '/', file: 'index.html' },
     { path: '/spotify', file: 'spotify.html' },
+    { path: '/ss', file: 'ss.html' },
     { path: '/imgur', file: 'Uploader.html' },
     { path: '/shoti', file: 'shoti.html' },
-    { path: '/nashbot', file: 'nashbot.html' },
     { path: '/tempmail', file: 'tempmail.html' }
 ];
 
@@ -23,6 +23,10 @@ routes.forEach(route => {
     });
 });
 
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
 app.use((req, res, next) => {
     const isServiceDown = false;
     if (isServiceDown) {
@@ -30,10 +34,6 @@ app.use((req, res, next) => {
     } else {
         next();
     }
-});
-
-app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
 app.listen(PORT, () => {
