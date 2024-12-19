@@ -1,0 +1,313 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="title" content="Joshua Apostol">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Portfolio</title>
+    <!--=================== Main CSS ====================-->
+    <link rel="stylesheet" href="main.css">
+    <!--=================== Google Fonts ====================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <!--=================== Remixicons ====================-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=================== SwiperJS CSS ====================-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!--=================== Header ====================-->
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav__brand">
+                    <i class="ri-code-s-slash-line"></i><span>Portfolio</span>
+                </a>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#hero" class="nav__link">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#about" class="nav__link">About</a>
+                        <li class="nav__item">
+                            <a href="#project" class="nav__link">Projects</a>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav__toggle">
+                    <i id="nav-toggle" class="ri-menu-3-line"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--=================== main ====================-->
+    <main class="main">
+        <!--=================== Hero ====================-->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="d-grid hero__wrapper">
+                    <div class="hero__content">
+                        <h1 class="hero__title">Hi, I am joshua Apostol</h1>
+                        <h2 id="typewriter" style="font-size: 25px; font-weight: bold; color: #1e90ff; border-right: 2px solid #1e90ff; white-space: nowrap; overflow: hidden; display: inline-block;">
+                        </h2>
+                        <p style="margin-top:15px;" class="hero__description">Passionate Web Developer continuously honing skills and expertise in crafting user-centric websites and web applications. With a growing portfolio of completed web projects, I am committed to improving my craft and staying updated with the latest technologies and trends. Dedicated to creating responsive, visually appealing, and efficient solutions, I thrive on challenges that foster growth and innovation. Every project is an opportunity to learn, improve, and deliver excellence.
+                        </p>
+                        <div class="hero__info">
+                            <div class="hero__info-wrapper">
+                                <p class="hero__info-number">5+</p>
+                                <h2 class="hero__info-title">Projects<br>Completed</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="img/pfp.png" alt="josh" class="hero__img">
+                </div>
+            </div>
+        </section>
+        <!--=================== About ====================-->
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="section__header">
+                    <h2 class="section__title">About Me</h2>
+                    <div class="d-grid about__wrapper">
+                        <div class="about__content">
+                            <p class="about__description">Welcome to my portfolio! I'm a web developer who dabbles in HTML, CSS, and JavaScript. Working under the name Joshua Apostol, I try my best to create websites that look decent and work alright. While I'm not the most skilled, I strive to improve with each project. Security is also a concern for me, so I do my best to keep things safe. Ultimately, my goal is to provide users with a satisfactory online experience.
+                            </p>
+                            <a href="#project" class="btn btn--primary">Know More</a>
+                        </div>
+                        <div class="skills">
+                            <h3 class="skills__title">Technologies I've been working with:</h3>
+                            <div class="skills__wrapper">
+                                <div class="skills__content">
+                                    <h4 class="skills__subtitle">Backend</h4>
+                                    <ul class="skills__list">
+
+                                        <li class="skills__item"><i class="ri-arrow-right-s-fill"></i>
+                                            Python</li>
+                                        <li class="skills__item"><i class="ri-arrow-right-s-fill"></i>
+                                            Node.js</li>
+                                    </ul>
+                                </div>
+                                <div class="skills__content">
+                                    <h4 class="skills__subtitle">Frontend</h4>
+                                    <ul class="skills__list">
+                                        <li class="skills__item"><i class="ri-arrow-right-s-fill"></i>
+                                            HTML</li>
+                                        <li class="skills__item"><i class="ri-arrow-right-s-fill"></i>
+                                            CSS</li>
+                                        <li class="skills__item"><i class="ri-arrow-right-s-fill"></i>
+                                            JavaScript</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!--=================== services ====================-->
+        <section id="services" class="section services" style="padding: 1px 0; background-color: inherit;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+                <h2 style="font-size: 32px; font-weight: bold; text-align: center; color: white; margin-bottom: 32px;">
+                    Services
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+                    <!-- Front-End Development -->
+                    <div style="background-color: black; padding: 24px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+                            <i class="ri-layout-4-fill" style="font-size: 40px; color: #4299e1;"></i>
+                        </div>
+                        <h3 style="font-size: 20px; font-weight: 600; text-align: center; margin-bottom: 8px; color: white;">
+                            Front-End Development
+                        </h3>
+                        <p style="color: #718096; text-align: center;">Creating responsive and interactive user
+                            interfaces using modern web technologies.</p>
+                    </div>
+
+                    <!-- UI/UX Design -->
+                    <div style="background-color: black; padding: 24px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+                            <i class="ri-pen-nib-fill" style="font-size: 40px; color: #9f7aea;"></i>
+                        </div>
+                        <h3 style="font-size: 20px; font-weight: 600; text-align: center; margin-bottom: 8px; color: white;">
+                            UI/UX Design
+                        </h3>
+                        <p style="color: #718096; text-align: center;">Designing intuitive and visually appealing user
+                            experiences for web and mobile applications.</p>
+                    </div>
+
+                    <div style="background-color: black; padding: 24px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+                            <i class="ri-server-fill" style="font-size: 40px; color: #48bb78;"></i>
+                        </div>
+                        <h3 style="font-size: 20px; font-weight: 600; text-align: center; margin-bottom: 8px; color: white;">
+                            Backend Development
+                        </h3>
+                        <p style="color: #718096; text-align: center;">Specializing in Node.js to create fast, scalable, and efficient server-side applications, ensuring seamless integrations and performance..</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!--=================== Projects ====================-->
+        <section id="project" class="section project">
+            <div class="container">
+                <div class="section__header">
+                    <h2 class="section__title">Projects</h2>
+                    <span class="section__subtitle">My recent work</span>
+                </div>
+                <div class="d-grid project__wrapper">
+                    <div class="project__content">
+                        <img src="img/ss.jpg" alt="Agency Website" class="project__img">
+                            <h3 class="project__title">Share Booster</h3>
+                        </a>
+                        <p class="project__description">An automated tool for sharing Facebook posts via URL and cookies.</p>
+                        <a href="https://autosharee.onrender.com/" class="project__link">View Project
+                            <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    
+                    <div class="project__content">
+                        <img src="img/ss2.jpg" alt="Agency Website" class="project__img">
+                            <h3 class="project__title">ImGur Image to Link</h3>
+                        </a>
+                        <p class="project__description">easy to upload your image, image to link converter</p>
+                        <a href="/imgur" class="project__link">View Project
+                            <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    
+                    <div class="project__content">
+                        <img src="img/ss3.jpg" alt="Agency Website" class="project__img">
+                            <h3 class="project__title">Random Shoti & any video Generator</h3>
+                        </a>
+                        <p class="project__description">A random Shoti Vids And any videos you can watch this</p>
+                        <a href="/shoti" class="project__link">View Project
+                            <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    
+                    <div class="project__content">
+                        <img src="img/ss4.jpg" alt="Agency Website" class="project__img">
+                            <h3 class="project__title">Pistebin</h3>
+                        </a>
+                        <p class="project__description">Pistebin allows you to quickly create and share text pastes with ease. Simply enter your text, generate a link, and share it with others. It's fast, simple, and free</p>
+                        <a href="https://pistebin.onrender.com/" class="project__link">View Project
+                            <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    
+                    <div class="project__content">
+                        <img src="img/ss5.jpg" alt="Agency Website" class="project__img">
+                            <h3 class="project__title">TempMail</h3>
+                        </a>
+                        <p class="project__description">A temporary Email if you wan't to use this to make a facebook account</p>
+                        <a href="/tempmail" class="project__link">View Project
+                            <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    
+                    <div class="project__content">
+                        <img src="img/ss6.jpg" alt="Agency Website" class="project__img">
+                            <h3 class="project__title">AUTOBOT (TELEGRAM)</h3>
+                        </a>
+                        <p class="project__description">Easy to make your own telegram Bot</p>
+                        <a href="https://telebot-auto.onrender.com/" class="project__link">View Project
+                            <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                </div>
+
+        </section>
+
+        </div>
+        <div class="swiper-pagination"></div>
+        </div>
+        </div>
+    </main>
+    <!--=================== footer ====================-->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="d-grid footer__wrapper" style="display:flex;justify-content:center; align-items:center; text-align:center;">
+                <div class="footer__content">
+                    <h4 class="footer__title">Follow Me</h4>
+                    <ul class="footer__social-list">
+                        <li class="footer__social-item">
+                            <a href="mailto:joshuaapostol909@gmail.com" target="_blank" class="footer__social-link">
+                                <i class="fa-regular fa-envelope fa-beat-fade"></i>
+                            </a>
+                        </li>
+                        <li class="footer__social-item">
+                            <a href="https://www.instagram.com/joshuaapostol1/profilecard/?igsh=cXpoMjFsZ3hhYzEx" target="_blank" class="footer__social-link">
+                                <i class="fa-brands fa-instagram fa-beat-fade"></i>
+                            </a>
+                        </li>
+                        <li class="footer__social-item">
+                            <a href="https://github.com/joshuaAposto" target="_blank" class="footer__social-link">
+                                <i class="fa-brands fa-github fa-fade"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <p class="footer__copyright">&copy; 2024 joshua Apostol. All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!--=================== SwiperJS  ====================-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!--=================== ScrollReveal ==================-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--=================== Main JS ====================-->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+
+<script>
+    const typewriterTexts = [
+        "Frontend Developer",
+        "backend Developer"
+    ];
+
+    let currentTextIndex = 0;
+    let charIndex = 0;
+
+    const typewriterElement = document.getElementById("typewriter");
+
+    function typeEffect() {
+        const currentText = typewriterTexts[currentTextIndex];
+        typewriterElement.textContent = currentText.slice(0, charIndex);
+        charIndex++;
+
+        if (charIndex > currentText.length) {
+            setTimeout(() => {
+                charIndex = 0;
+                currentTextIndex = (currentTextIndex + 1) % typewriterTexts.length;
+                typeEffect();
+            }, 2000);
+        } else {
+            setTimeout(typeEffect, 100);
+        }
+    }
+
+    typeEffect();
+</script>
+</body>
+
+</html>

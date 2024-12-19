@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00f7ff;
+            --secondary-color: #ff00e6;
+            --background-color: #060615;
+            --text-color: #e0e0ff;
+            --nav-height: 80px;
+            --transition-speed: 0.3s;
+            --glow-strength: 5px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: none;
+            background-color: var(--background-color);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(6, 6, 21, 0.8);
+            padding: 15px 30px;
+            box-shadow: 0 4px 10px rgba(0, 247, 255, 0.4);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .menu-btn {
+            font-size: 2rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(6, 6, 21, 0.9);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            z-index: 100;
+        }
+
+        .sidebar a {
+            padding: 15px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: var(--text-color);
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .wrapper-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .error-container {
+            text-align: center;
+            color: var(--text-color);
+            margin-top: 50px;
+        }
+
+        .error-container h1 {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .error-container p {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .error-link {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            padding: 10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .error-link:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            text-shadow: 0 0 var(--glow-strength) var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">404</div>
+        <div class="menu-btn" onclick="toggleMenu()">&#9776;</div>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
+        <a href="https://autosharee.onrender.com/">Spamshare</a>
+        <a href="https://www.facebook.com/profile.php?id=100088690249020">Contact</a>
+    </div>
+
+    <div class="wrapper-container">
+        <div class="error-container">
+            <h1>404</h1>
+            <p>Oops! The page does not exist.</p>
+            <a href="/index.html" class="error-link">Go Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById("mySidebar");
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0";
+            } else {
+                sidebar.style.width = "250px";
+            }
+        }
+
+        function closeMenu() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function toggleChat() {
+            const chatContainer = document.getElementById("chat-container");
+            chatContainer.style.display = (chatContainer.style.display === "none" || chatContainer.style.display === "") ? "block" : "none";
+        }
+    </script>
+</body>
+
+</html>
